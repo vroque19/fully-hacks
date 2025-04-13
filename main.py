@@ -27,13 +27,11 @@ def main():
     if RIGHT_BUTTON.is_pressed:
       rotate_y_clockwise()
       print("right ")
-      # rotate_x_clockwise()
     elif GRAB_BUTTON.is_pressed:
       print("grab button")
       grab_prize()
     else:
       continue
-    # time.sleep(0.05)
 
 
 
