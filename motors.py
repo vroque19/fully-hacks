@@ -1,5 +1,4 @@
-from gpiozero import OutputDevice
-import keyboard
+from gpiozero import OutputDevice, Servo, AngularServo, Button
 import time
 
 STEP_SEQUENCE = [
@@ -49,10 +48,14 @@ def rotate_y_clockwise():
 #       time.sleep(0.001)
 
 def main():
+    UP_BUTTON = Button(5, pull_up=False)
+    DOWN_BUTTON = Button(6, pull_up=False)
     while True:
-        if keyboard.is_pressed("up"):
+        if UP_BUTTON.is_pressed and DOWN_BUTTON.is_pressed:
+           continue
+        elif UP_BUTTON.is_pressed:
             rotate_y_counter()
-        if keyboard.is_pressed("down"):
+        elif DOWN_BUTTON.is_pressed:
             rotate_y_clockwise()
     # steps = 128 # 45 degrees
     # for i in range(steps):
